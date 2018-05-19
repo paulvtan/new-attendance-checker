@@ -8,47 +8,44 @@
 <html>
 <head>
     <link rel="stylesheet" href="~/css/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 <body>
 
+    <div> Title </div>
 
-    @*<img src="~/images/checkin.png" class="checkinbutton" />*@
-
-    @*<div class="title">
-            Cecil
+    <div class="location-subject">
+        <div class="box currentlocation"> 
+            <p>Current Location</p>
+            <p> </p>
+            <p> </p>
+        </div>
+        <div class="box lecture"> 
+        lecture 
         </div>
 
+    </div>
+
+    <button class="btn-success btn" style="
+    margin: 0 auto;
+    display:block; 
+    width: 20%;
+    font-size:  200%;
+    margin-top:20px;
+    " >Check in</button>
 
 
 
 
-        <div class="classes fonttext">
 
-            <div class="currentclass">
-                <h3>Current Class....</h3>
-                <h1 class="coursename">COMPSCI345</h1>
-            </div>
+    @*<p>Click the button to get your coordinates.</p>
 
-            <div class="nextclass">
-                <h3>Next Class....</h3>
-                <h1 class="coursename">ITALIAN101G</h1>
-            </div>
-        </div>
+        <button onclick="getLocation()">Try It</button>
 
-        <div class="marketplace fonttext">
-
-        </div>*@
-    <p>Click the button to get your coordinates.</p>
-
-    <button onclick="getLocation()">Try It</button>
-
-    <p id="demo"></p>
-    <p id="address"> Current address </p>
-    <p id="location"> Building </p>
-
-
-
-
+        <p id="demo"></p>
+        <p id="address"> Current address </p>
+        <p id="location"> Building </p>*@
 </body>
 </html>
 

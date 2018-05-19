@@ -1,4 +1,39 @@
-﻿body {
+﻿.title{
+
+}
+
+
+
+.currentlocation{
+
+}
+
+.lecture{
+
+}
+
+
+.location-subject {
+    width: 100%;
+    /*margin: 0 auto;*/
+    text-align: center;
+}
+
+
+.box {
+    display: inline-block;
+    border: dashed 5px solid;
+    background: #000;
+    width: 10%;
+    height: 10%;
+}
+
+.checkin-button {
+    width:20%;
+}
+
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -33,3 +68,7 @@
         display: none;
     }
 }
+
+
+
+
