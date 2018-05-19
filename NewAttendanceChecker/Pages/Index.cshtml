@@ -13,30 +13,32 @@
 </head>
 <body>
 
-    <div> Title </div>
-
+    <img src="~/images/logo.png" class="logo"/>
     <div class="location-subject">
+
         <div class="box currentlocation">
-            <p>Current Location</p>
-            <p id="address"> Current address </p>
-            <p id="location"> Building </p>
+            <p class="header">Current Location</p>
+            <p id="address" class="header-info"> Current address </p>
+            <p id="location" class="header-info"> Building </p>
         </div>
 
 
         <div class="box lecture">
-            <p>Lecture now</p>
-            <p> COMPSCI101 </p>
-            <p> LOCATION </p>
+            <p class="header">Lecture now</p>
+            <p class="header-info"> COMPSCI101 </p>
+            <p class="header-info"> Science Building </p>
         </div>
 
     </div>
 
-    <button class="btn-success btn" style="
+    <button class=" btn" style="
     margin: 0 auto;
     display:block;
     width: 20%;
     font-size:  200%;
-    margin-top:20px;
+    margin-top:50px;
+    background-color:  #4db8ff;
+    color:white;
     ">
         Check in
     </button>
