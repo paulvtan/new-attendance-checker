@@ -18,6 +18,7 @@ namespace NewAttendanceChecker.Data
         public DbSet<Lecturer> Lecturers { get; set; }
         public DbSet<CourseTag> CourseTags { get; set; }
         public DbSet<Session> Sessions { get; set; }
+        public DbSet<Attendance> AttendanceList { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -38,8 +39,8 @@ namespace NewAttendanceChecker.Data
             var context = services.GetRequiredService<ApplicationDbContext>();
             List<string> fixedListCourses = new List<string> { "COMPSCI101","COMPSCI105","COMPSCI111","COMPSCI220", "COMPSCI230", "COMPSCI225", "COMPSCI335", "COMPSCI320" }.OrderBy(q => q).ToList();
             List<string> fixedListLecturers = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H" }.OrderBy(q => q).ToList();
-            List<string> fixedListStudents = new List<string> { "kngu576", "riss899", "vtan618", "even069" }.OrderBy(q => q).ToList();
-
+            List<string> fixedListStudents = new List<string> { "kngu576", "riss899", "vtan618", "even069" }.ToList();
+            List<string> fixedListNames = new List<string> { "Khoa", "Rahul", "Paul", "Renzo" }.ToList();
 
             var courses = context.Courses.Select(c => c.Name);
             var lecturers = context.Lecturers.Select(c => c.Name);
@@ -74,19 +75,21 @@ namespace NewAttendanceChecker.Data
             var allCourses = context.Courses.ToList();
             List<Course> randomCourses;
             List<CourseTag> CourseTags;
-            var students = context.Students.Select(c => c.Name);
-            foreach (var student in fixedListStudents)
+            var students = context.Students.Select(c => c.StudentID);
+            for(int i=0;i<fixedListStudents.Count();i++)
             {
+                var student = fixedListStudents.ElementAt(i);
                 if (!students.Contains(student))
                 {
                     Student = new Student
                     {
-                        Name = student,
+                        StudentID=student,
+                        Name = fixedListNames.ElementAt(i),
                         Points = 0
                     };
                     CourseTags = new List<CourseTag> { };
                     randomCourses = new List<Course> { };
-                    while (randomCourses.Count() < 3)
+                    while (CourseTags.Count() < 3)
                     {
                         ranNum = random.Next(0, context.Courses.Count());
                         Course = allCourses.ElementAt(ranNum);
@@ -103,7 +106,7 @@ namespace NewAttendanceChecker.Data
                         }
 
                     }
-                    Student.CourseTags = CourseTags;
+                   
                     await context.Students.AddAsync(Student);
 
 

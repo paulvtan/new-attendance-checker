@@ -7,18 +7,15 @@ using System.Threading.Tasks;
 
 namespace NewAttendanceChecker.Data.Models
 {
-    public class Session
+    public class Attendance
     {
         [Key]
+        public string AttendanceID { get; set; }
+        public string StudentID { get; set; }
         public string SessionID { get; set; }
-        public string CourseID { get; set; }
-        public double Longitude { get; set; }
-        public double Latitude { get; set; }
-        [ForeignKey("CourseID")]
-        public Course Course { get; set; }
-        public ICollection<Attendance> AttendanceList { get; set; }
-    
-
-
+        [ForeignKey("StudentID")]
+        public Student Student { get; set; }
+        [ForeignKey("SessionID")]
+        public Session Session { get; set; }
     }
 }

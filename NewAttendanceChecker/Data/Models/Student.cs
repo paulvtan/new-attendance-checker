@@ -14,5 +14,6 @@ namespace NewAttendanceChecker.Data.Models
         public int Points { get; set; }
 
         public ICollection<CourseTag> CourseTags { get; set; }
+        public ICollection<Attendance> AttendanceList { get; set; }
     }
 }
