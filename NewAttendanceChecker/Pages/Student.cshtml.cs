@@ -61,7 +61,6 @@ namespace NewAttendanceChecker.Pages
                 .ToList();
             if (checkInCode != null)
             {
-                
             }
             return RedirectToPage();
         }

@@ -19,7 +19,7 @@ namespace NewAttendanceChecker.Pages
         }
         public void OnGet()
         {
-            var a = _context.Sessions.Include(s => s.Course);
+            //var a = _context.Sessions.Include(s => s.Course);
         }
     }
 }
