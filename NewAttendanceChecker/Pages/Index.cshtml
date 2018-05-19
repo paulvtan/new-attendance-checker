@@ -16,36 +16,42 @@
     <div> Title </div>
 
     <div class="location-subject">
-        <div class="box currentlocation"> 
+        <div class="box currentlocation">
             <p>Current Location</p>
-            <p> </p>
-            <p> </p>
+            <p id="address"> Current address </p>
+            <p id="location"> Building </p>
         </div>
-        <div class="box lecture"> 
-        lecture 
+
+
+        <div class="box lecture">
+            <p>Lecture now</p>
+            <p> COMPSCI101 </p>
+            <p> LOCATION </p>
         </div>
 
     </div>
 
     <button class="btn-success btn" style="
     margin: 0 auto;
-    display:block; 
+    display:block;
     width: 20%;
     font-size:  200%;
     margin-top:20px;
-    " >Check in</button>
+    ">
+        Check in
+    </button>
 
 
+    @*<p id="demo" style="position:absolute;"></p>*@ 
 
 
 
     @*<p>Click the button to get your coordinates.</p>
 
-        <button onclick="getLocation()">Try It</button>
+    <button onclick="getLocation()">Try It</button>
 
-        <p id="demo"></p>
-        <p id="address"> Current address </p>
-        <p id="location"> Building </p>*@
+    <p id="address"> Current address </p>
+    <p id="location"> Building </p>*@
 </body>
 </html>
 
@@ -58,7 +64,7 @@
     var currentlocation = "";
     var proper_address = document.getElementById("address");
 
-
+    //getLocation();
 
 
     function getLocation() {
