@@ -1,60 +1,26 @@
-﻿@page
-@model IndexModel
+﻿@page "{Name}"
+@model NewAttendanceChecker.Pages.LecturerModel
 @{
-    Layout = null;
+    ViewData["Title"] = "Lecturer";
 }
 
 
-<html>
 <head>
     <link rel="stylesheet" href="~/css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
-<body>
+<h2>Lecturer</h2>
+<h5>My name: @Model.Lecturer.Name</h5>
+<h5>My course: @Model.Lecturer.Course.Name</h5>
+<button class="locationButton" style="display:none;" onclick="getLocation()">Try It</button>
+<form method="post">
+    <input type="hidden" name="id" value="@Model.Lecturer.Course.CourseID" />
 
-
-    @*<img src="~/images/checkin.png" class="checkinbutton" />*@
-
-    @*<div class="title">
-            Cecil
-        </div>
-
-
-
-
-
-        <div class="classes fonttext">
-
-            <div class="currentclass">
-                <h3>Current Class....</h3>
-                <h1 class="coursename">COMPSCI345</h1>
-            </div>
-
-            <div class="nextclass">
-                <h3>Next Class....</h3>
-                <h1 class="coursename">ITALIAN101G</h1>
-            </div>
-        </div>
-
-        <div class="marketplace fonttext">
-
-        </div>*@
-    <p>Click the button to get your coordinates.</p>
-
-    <button class="locationButton" style="display:none;"onclick="getLocation()">Try It</button>
-    <form method="post">
-   
-    </form>
-    <p id="demo"></p>
-    <p id="address"> Current address </p>
-    <p id="location"> Building </p>
-
-
-
-
-</body>
-</html>
+    <input type="hidden" name="lng" id="longValue"  />
+    <input type="hidden" name="lat" id="latValue"  />
+    <button type="submit">Make a session</button>
+</form>
 
 
 <script>
@@ -81,8 +47,7 @@
     }
 
     function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude +
-            "<br>Longitude: " + position.coords.longitude;
+      
         lat = position.coords.latitude;             //current latitude
         lng = position.coords.longitude;            //current longitude
         $("#longValue").val(lng);
@@ -98,7 +63,7 @@
         xhr.open("GET", urlapi, true);
         xhr.onload = function () {
             var locationJSON = JSON.parse(xhr.responseText);
-       
+
             //console.log(xhr.responseText);        //prints the json string
             //console.log(locationJSON.results[0].address_components[0]);
             var get_nickname_dictionary = locationJSON.results[0].address_components[0]; //this variable gives us  dictionary
@@ -110,10 +75,9 @@
 
             currentlocation = get_nickname_dictionary["long_name"];  //THIS IS THE NAME OF CURRENT LOCATION FROM CO-ORDINAATES
             console.log(currentlocation);
-            mylocation.innerHTML = currentlocation; //puts this into frontend
 
             console.log(get_address_dictionary); //print proper address of current location from co-ordinates
-            proper_address.innerHTML = get_address_dictionary;
+          
         }
         xhr.send(null);
     }

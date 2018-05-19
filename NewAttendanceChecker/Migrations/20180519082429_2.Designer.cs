@@ -11,9 +11,10 @@ using System;
 namespace NewAttendanceChecker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180519082429_2")]
+    partial class _2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +36,7 @@ namespace NewAttendanceChecker.Migrations
 
                     b.HasIndex("StudentID");
 
-                    b.ToTable("AttendanceList");
+                    b.ToTable("Attendance");
                 });
 
             modelBuilder.Entity("NewAttendanceChecker.Data.Models.Course", b =>
@@ -85,10 +86,6 @@ namespace NewAttendanceChecker.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CourseID");
-
-                    b.Property<double>("Latitude");
-
-                    b.Property<double>("Longitude");
 
                     b.HasKey("SessionID");
 
