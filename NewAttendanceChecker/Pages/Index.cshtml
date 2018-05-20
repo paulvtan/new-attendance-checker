@@ -9,7 +9,9 @@
 <head>
     <link rel="stylesheet" href="~/css/index.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <script src="~/js/sweetalert2.all.min.js"></script>
+    <script src="https://unpkg.com/promise-polyfill"></script>
+    <link rel="stylesheet" href="~/css/sweetalert2.min.css">
 </head>
 <body>
 
@@ -37,7 +39,7 @@
     width: 20%;
     font-size:  200%;
     margin-top:20px;
-    ">
+    " onclick="displayPrompt()">
         Check in
     </button>
 
@@ -57,6 +59,38 @@
 
 
 <script>
+
+    function displayPrompt() {
+        swal.mixin({
+            input: 'text',
+            confirmButtonText: 'Validate &rarr;',
+            showCancelButton: true
+        }).queue([
+            {
+                title: 'Check-In',
+                text: 'Please input unique code'
+            }
+        ]).then((result) => {
+            if (result.value == '1552') {
+                swal({
+                    type: "success",
+                    title: 'Check-in successful',
+                    text: '100 coins have been added to your wallet.',
+                    imageUrl: '/coin.png',
+                    imageHeight: 50,
+                    confirmButtonText: 'Lovely!'
+                });
+            } else {
+                swal({
+                    type: 'error',
+                    title: 'Invalid Location!',
+                    text: 'You are not at your current lecture location.'
+                });
+            }
+        });
+    }
+
+
     var x = document.getElementById("demo");
     var mylocation = document.getElementById("location");
     var lat = "";
@@ -110,9 +144,6 @@
         }
         xhr.send(null);
     }
-
-
-
 
 
 </script>
